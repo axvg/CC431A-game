@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 10f;
     public Vector2 direction;
 
-    public System.Action<Bullet> onBulletDestroyed;
+    // public System.Action<Bullet> onBulletDestroyed;
+
+    private IObjectPool<Bullet> pool;
 
     private float lifeTime = 0f;
     private float maxLifeTime = 5f;
@@ -21,13 +24,31 @@ public class Bullet : MonoBehaviour
         lifeTime += Time.deltaTime;
         if (lifeTime >= maxLifeTime)
         {
-            Desactivate();
+            // Desactivate();
+            ReturnToPool();
         }
     }
 
     public void Desactivate()
     {
-        onBulletDestroyed?.Invoke(this);
+        // onBulletDestroyed?.Invoke(this);
         gameObject.SetActive(false);
+    }
+
+    public void SetPool(IObjectPool<Bullet> bulletPool)
+    {
+        pool = bulletPool;
+    }
+
+    public void ReturnToPool()
+    {
+        if (pool != null)
+        {
+            pool.Release(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
