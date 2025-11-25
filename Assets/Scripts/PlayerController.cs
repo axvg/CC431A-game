@@ -1,0 +1,28 @@
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    [Header("Settings")]
+    public float speed = 10f;
+    public Vector2 boundary = new Vector2(8.5f, 4.5f);
+
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+
+        Vector2 moveDir = new Vector2(x, y).normalized;
+        transform.Translate(moveDir * speed * Time.deltaTime);
+
+    
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, -boundary.x, boundary.x);
+        pos.y = Mathf.Clamp(pos.y, -boundary.y, boundary.y);
+        transform.position = pos;
+    }
+}
