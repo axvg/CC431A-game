@@ -129,9 +129,10 @@ GameObject:
   m_Component:
   - component: {fileID: 285176938}
   - component: {fileID: 285176937}
-  - component: {fileID: 285176940}
+  - component: {fileID: 285176943}
   - component: {fileID: 285176939}
   - component: {fileID: 285176941}
+  - component: {fileID: 285176942}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -183,20 +184,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PatternRing
   patternColor: 0
   bulletCount: 12
---- !u!114 &285176940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285176936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13d122af142ea75419986c374e985733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PatternController
-  fireRate: 0.05
-  pattern: {fileID: 285176941}
 --- !u!114 &285176941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +200,35 @@ MonoBehaviour:
   bulletArms: 10
   angleStep: 20
   reverse: 0
+--- !u!114 &285176942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285176936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e6c386111bad042b5ab64b18a14042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatternMixed
+  patternColor: 0
+  totalArms: 4
+  rotationStep: 5
+--- !u!114 &285176943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285176936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d122af142ea75419986c374e985733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatternController
+  fireRate: 0.5
+  pattern: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
