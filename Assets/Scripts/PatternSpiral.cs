@@ -19,6 +19,7 @@ public class PatternSpiral : BasePattern
 
             Bullet b = BulletPoolManager.Instance.GetBullet(spawner.position, Quaternion.identity);
             b.direction = GetDirectionFromAngle(angle);
+            b.SetColor(patternColor);
         }
 
         if (reverse)

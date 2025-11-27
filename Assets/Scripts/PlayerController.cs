@@ -6,9 +6,42 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     public Vector2 boundary = new Vector2(8.5f, 4.5f);
 
+    public BulletColor playerColor = BulletColor.Red;
+    private SpriteRenderer sr;
+
     void Start()
     {
-        
+        sr = GetComponent<SpriteRenderer>();
+        UpdateColorVisuals();
+    }
+
+    void SwapColor()
+    {
+        if (playerColor == BulletColor.Red)
+        {
+            playerColor = BulletColor.Blue;
+        }
+        else
+        {
+            playerColor = BulletColor.Red;
+        }
+
+        UpdateColorVisuals();
+    }
+
+    void UpdateColorVisuals()
+    {
+        if (sr != null)
+        {
+            if (playerColor == BulletColor.Red)
+            {
+                sr.color = Color.red;
+            }
+            else if (playerColor == BulletColor.Blue)
+            {
+                sr.color = Color.blue;
+            }
+        }
     }
 
     void Update()
@@ -24,5 +57,10 @@ public class PlayerController : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, -boundary.x, boundary.x);
         pos.y = Mathf.Clamp(pos.y, -boundary.y, boundary.y);
         transform.position = pos;
+    
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SwapColor();
+        }
     }
 }

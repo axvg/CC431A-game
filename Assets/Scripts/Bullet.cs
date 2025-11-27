@@ -13,6 +13,30 @@ public class Bullet : MonoBehaviour
     private float lifeTime = 0f;
     private float maxLifeTime = 5f;
 
+    public BulletColor bc;
+    private SpriteRenderer sr;
+
+    void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+    }
+
+    public void SetColor(BulletColor newType)
+    {
+        bc = newType;
+        if (sr != null)
+        {
+            if (bc == BulletColor.Red)
+            {
+                sr.color = Color.red;
+            }
+            else if (bc == BulletColor.Blue)
+            {
+                sr.color = Color.blue;
+            }
+        }
+    }
+
     void OnEnable()
     {
         lifeTime = 0;
