@@ -63,4 +63,23 @@ public class PlayerController : MonoBehaviour
             SwapColor();
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Bullet b = other.GetComponent<Bullet>();
+        if (b != null)
+        {
+            if (b.bc != playerColor)
+            {
+                Debug.Log("Game Over");
+            }
+            else
+            {
+                Debug.Log("safe");
+                b.ReturnToPool();
+            }
+
+            // b.Desactivate();
+        }
+    }
 }
