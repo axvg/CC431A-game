@@ -76,6 +76,10 @@ public class PlayerController : MonoBehaviour
             else
             {
                 Debug.Log("safe");
+                if (ScoreManager.Instance != null)
+                {
+                    ScoreManager.Instance.AddScore(1);
+                }
                 b.ReturnToPool();
             }
 
