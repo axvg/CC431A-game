@@ -34,6 +34,10 @@ public class LevelData : ScriptableObject
     [Header("player config")]
     public List<BulletColor> playerColors;
 
+    [Header("tutorial msg")]
+    [TextArea]
+    public string startMessage;
+
     public BulletColor constantColor;
     public BulletColor[] randomColors;
 

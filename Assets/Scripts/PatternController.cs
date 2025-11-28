@@ -208,9 +208,17 @@ public class PatternController : MonoBehaviour
     IEnumerator ShowLevelName(int levelNumber)
     {
         messageText.text = "LEVEL " + levelNumber;
-        
+        messageText.fontSize = 60;
         yield return new WaitForSeconds(2f);
-
+        
+        if (!string.IsNullOrEmpty(currentLevelData.startMessage))
+        {
+            messageText.text = currentLevelData.startMessage;
+            messageText.fontSize = 40;
+            
+            yield return new WaitForSeconds(3f);
+        }
+        
         messageText.text = "";
     }
 }

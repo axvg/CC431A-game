@@ -43,5 +43,6 @@ MonoBehaviour:
     enemies aprox: 12'
   colorMode: 1
   playerColors: 0000000001000000
+  startMessage: PRESS <SPACE> TO CHANGE COLOR! SAME COLOR = IMMUNE
   constantColor: 1
   randomColors: 0000000001000000
