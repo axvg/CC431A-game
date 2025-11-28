@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3253890484822764736}
   - component: {fileID: 7325870623276078202}
   m_Layer: 0
-  m_Name: EnemyShip
+  m_Name: EnemyShipL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,8 +188,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
+      time: 0.015724182
+      value: 0.9857178
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -198,9 +198,9 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0.20238113
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
