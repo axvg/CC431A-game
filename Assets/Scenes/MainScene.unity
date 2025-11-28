@@ -306,7 +306,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d122af142ea75419986c374e985733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatternController
-  levelWaves: []
+  levelWaves:
+  - name: 
+    pattern: {fileID: 0}
+    duration: 0
+    fireRate: 0
   loopLevel: 1
   fireRate: 0.5
 --- !u!1 &519420028
