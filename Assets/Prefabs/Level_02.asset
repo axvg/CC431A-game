@@ -44,6 +44,8 @@ MonoBehaviour:
   colorMode: 1
   playerColors: 0000000001000000
   allowFocus: 0
-  startMessage: Press<SPACE> to change your color! same colo = immune
+  startMessage: 'Press<SPACE> to change your color!
+
+    same color = immune'
   constantColor: 1
   randomColors: 0000000001000000

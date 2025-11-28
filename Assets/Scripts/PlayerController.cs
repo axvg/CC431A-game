@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("¡Daño Recibido!");
+                Debug.Log("damage");
                 
                 if (ScoreManager.Instance != null) 
                 {

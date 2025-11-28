@@ -47,6 +47,8 @@ MonoBehaviour:
   colorMode: 1
   playerColors: 000000000100000002000000
   allowFocus: 1
-  startMessage: hold <SHIFT> for focus mode
+  startMessage: 'hold <SHIFT> for focus mode
+
+    and you have a new color'
   constantColor: 1
   randomColors: 000000000100000002000000
