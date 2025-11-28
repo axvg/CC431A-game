@@ -10,6 +10,12 @@ public class Wave
     public float duration;
 }
 
+public enum LevelColorMode
+{
+    Constant,
+    Random
+}
+
 [CreateAssetMenu(fileName = "NewLevel", menuName = "Game/LevelData")]
 public class LevelData : ScriptableObject
 {
@@ -19,6 +25,13 @@ public class LevelData : ScriptableObject
     [Header("Level info")]
     [TextArea]
     public string levelInfo;
+
+    [Header("Level color settings")]
+    public LevelColorMode colorMode = LevelColorMode.Constant;
+
+
+    public BulletColor constantColor;
+    public BulletColor[] randomColors;
 
     void OnValidate()
     {

@@ -13,53 +13,82 @@ using System.Collections.Generic;
 
 public class PatternController : MonoBehaviour
 {
-    [Header("level settings")]
-    public List<Wave> levelWaves;
-    public bool loopLevel = true;
+[Header("Configuración de Niveles")]
+    public List<LevelData> gameLevels;
+    public bool loopGame = false;
 
+    [Header("Estado Actual (No tocar)")]
+    public int currentLevelIndex = 0;
     private int currentWaveIndex = 0;
-    private float waveTimer = 0f;
-    private float fireTimer = 0f;
+    private LevelData currentLevelData;
 
-    public float fireRate = .5f;
-    private float timer;
-
-    public float xSpawnLimit = 8f;
+    private float waveTimer;
     private float spawnTimer;
-    // public BasePattern pattern;
+    public float xSpawnLimit = 8f;
 
     void Start()
     {
+        LoadLevel(0);
+    }
+
+    void LoadLevel(int index)
+    {
+        if (index >= gameLevels.Count)
+        {
+            Debug.Log("end game");
+            currentLevelData = null; // stop all
+            return;
+        }
+
+        currentLevelIndex = index;
+        currentLevelData = gameLevels[index];
+        
         currentWaveIndex = 0;
-        waveTimer = 0f;
-        fireTimer = 0f;
+        waveTimer = 0;
+        spawnTimer = 0;
+        
+        Debug.Log("Iniciando: " + currentLevelData.levelName);
     }
 
     void Update()
     {
-        if (levelWaves.Count == 0)
-            return;
+        if (currentLevelData == null) return;
 
-        Wave currentWave = levelWaves[currentWaveIndex];
+        if (currentLevelData.waves.Count == 0) return;
 
+        Wave currentWave = currentLevelData.waves[currentWaveIndex];
+
+        // 1. spawning
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= currentWave.spawnRate)
         {
             if (currentWave.enemyOptions.Length > 0)
             {
-                int randomIndex = Random.Range(0, currentWave.enemyOptions.Length);
-                GameObject randomEnemy = currentWave.enemyOptions[randomIndex];
-                
-                SpawnEnemy(randomEnemy);
+                int r = Random.Range(0, currentWave.enemyOptions.Length);
+                SpawnEnemy(currentWave.enemyOptions[r]);
             }
-            
             spawnTimer = 0f;
         }
 
+        // 2. control de tiempo de oleada
         waveTimer += Time.deltaTime;
         if (waveTimer >= currentWave.duration)
         {
             NextWave();
+        }
+    }
+
+    void NextWave()
+    {
+        waveTimer = 0;
+        currentWaveIndex++;
+
+        // if all waves completed
+        if (currentWaveIndex >= currentLevelData.waves.Count)
+        {
+            Debug.Log("Nivel Completado: " + currentLevelData.levelName);
+
+            LoadLevel(currentLevelIndex + 1);
         }
     }
 
@@ -70,31 +99,27 @@ public class PatternController : MonoBehaviour
         float randomX = Random.Range(-xSpawnLimit, xSpawnLimit);
         Vector3 spawnPos = new Vector3(randomX, 6f, 0);
 
-        // Instantiate(prefab, spawnPos, Quaternion.identity); // enemy in space
-        // Instantiate(prefab, spawnPos, prefab.transform.rotation); // enemy facing down
-        Instantiate(prefab, spawnPos, Quaternion.Euler(0, 0, 180));
-    }
+        GameObject newEnemyObj = Instantiate(prefab, spawnPos, prefab.transform.rotation);
 
-    void NextWave()
-    {
-        waveTimer = 0f;
-        currentWaveIndex++;
+        BulletColor chosenColor = BulletColor.Red;
 
-        if (currentWaveIndex >= levelWaves.Count)
+        if (currentLevelData.colorMode == LevelColorMode.Constant)
         {
-            if (loopLevel)
-            {
-                currentWaveIndex = 0;
-                Debug.Log("-> restarted level");
-            }
-            else
-            {
-                currentWaveIndex = levelWaves.Count - 1;
-                Debug.Log("-> end of level");
-            }
-        } else
+            chosenColor = currentLevelData.constantColor;
+        }
+        else
         {
-            Debug.Log("-> start wave: " + levelWaves[currentWaveIndex].name);
+            if (currentLevelData.randomColors.Length > 0)
+            {
+                int r = Random.Range(0, currentLevelData.randomColors.Length);
+                chosenColor = currentLevelData.randomColors[r];
+            }
+        }
+
+        EnemyController enemyScript = newEnemyObj.GetComponent<EnemyController>();
+        if (enemyScript != null)
+        {
+            enemyScript.SetEnemyColor(chosenColor);
         }
     }
 }

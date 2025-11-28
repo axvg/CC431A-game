@@ -17,11 +17,11 @@ MonoBehaviour:
   - name: 
     enemyOptions:
     - {fileID: 3201272136479284253, guid: b161d42e8746818428d0a56dcb87af6d, type: 3}
-    spawnRate: 10
-    duration: 5
-  - name: 
-    enemyOptions:
-    - {fileID: 3201272136479284253, guid: b161d42e8746818428d0a56dcb87af6d, type: 3}
-    - {fileID: 3201272136479284253, guid: c70303419f443d445b64e84826f641a5, type: 3}
-    spawnRate: 20
-    duration: 5
+    spawnRate: 2
+    duration: 20
+  levelInfo: 'duracion total: 20 seg (0:20)
+
+    enemies aprox: 10'
+  colorMode: 0
+  constantColor: 0
+  randomColors: 

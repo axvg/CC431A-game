@@ -1,5 +1,6 @@
 public enum BulletColor
 {
     Red,
-    Blue
+    Blue,
+    Green
 }

@@ -23,11 +23,46 @@ public class EnemyController : MonoBehaviour
     // [Header("shoot")]
     // public float fireRate = 1.5f;
     // private float timer;
+    private SpriteRenderer sr;
     private BasePattern myPattern;
+
+    void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        myPattern = GetComponent<BasePattern>();
+    }
+
+    public void SetEnemyColor(BulletColor color)
+    {
+        if (sr != null)
+        {
+            switch (color)
+            {
+                case BulletColor.Red:
+                    sr.color = Color.red;
+                    break;
+                case BulletColor.Blue:
+                    sr.color = Color.blue;
+                    break;
+                case BulletColor.Green:
+                    sr.color = Color.green;
+                    break;
+                default:
+                    sr.color = Color.white;
+                    break;
+            }
+        }
+
+        if (myPattern != null)
+        {
+            Debug.Log("Setting pattern from: " + myPattern.patternColor + " to: " + color);
+            myPattern.patternColor = color;
+            Debug.Log("Pattern color set to: " + myPattern.patternColor);
+        }
+    }
 
     void Start()
     {
-        myPattern = GetComponent<BasePattern>();
         timer = fireRate * .8f; // delay first shot
         startPos = transform.position;
     }

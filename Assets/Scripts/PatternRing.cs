@@ -13,6 +13,7 @@ public class PatternRing: BasePattern
         for (int i = 0; i < bulletCount; i++)
         {
             Bullet b = BulletPoolManager.Instance.GetBullet(spawner.position, Quaternion.identity);
+            b.SetColor(patternColor);
 
             Vector2 shootDirection = GetDirectionFromAngle(currentAngle);
             b.direction = shootDirection;
