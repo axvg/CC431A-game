@@ -63,7 +63,9 @@ public class PatternController : MonoBehaviour
         float randomX = Random.Range(-xSpawnLimit, xSpawnLimit);
         Vector3 spawnPos = new Vector3(randomX, 6f, 0);
 
-        Instantiate(prefab, spawnPos, Quaternion.identity); // enemy in space
+        // Instantiate(prefab, spawnPos, Quaternion.identity); // enemy in space
+        // Instantiate(prefab, spawnPos, prefab.transform.rotation); // enemy facing down
+        Instantiate(prefab, spawnPos, Quaternion.Euler(0, 0, 180));
     }
 
     void NextWave()

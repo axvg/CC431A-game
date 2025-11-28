@@ -307,12 +307,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatternController
   levelWaves:
-  - name: 
-    pattern: {fileID: 0}
-    duration: 0
-    fireRate: 0
+  - name: 1
+    enemyPrefab: {fileID: 3201272136479284253, guid: b161d42e8746818428d0a56dcb87af6d, type: 3}
+    duration: 10
+    spawnRate: 2
   loopLevel: 1
   fireRate: 0.5
+  xSpawnLimit: 8
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +617,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -704,7 +705,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.29
 --- !u!1 &1230736682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,7 +1222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5377358, g: 0.53519934, b: 0.53519934, a: 1}
+      maxColor: {r: 0.5377358, g: 0.53519934, b: 0.53519934, a: 0.09803922}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

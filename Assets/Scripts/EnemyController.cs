@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         // enemy downwards
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
+        transform.Translate(Vector2.down * speed * Time.deltaTime, Space.World);
 
         // shoot
         timer += Time.deltaTime;
