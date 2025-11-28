@@ -1,15 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[System.Serializable] 
-public class Wave
-{
-    public string name;
-    // public BasePattern pattern;
-    public GameObject[] enemyOptions;
-    public float duration;
-    public float spawnRate;
-}
+// [System.Serializable] 
+// public class Wave
+// {
+//     public string name;
+//     // public BasePattern pattern;
+//     public GameObject[] enemyOptions;
+//     public float duration;
+//     public float spawnRate;
+// }
 
 public class PatternController : MonoBehaviour
 {
