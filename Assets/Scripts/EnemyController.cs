@@ -2,27 +2,45 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [Header("movement")]
-    public float speed = 3f;
-    public float lifeY = -10f;
+    // [Header("movement")]
+    // public float speed = 3f;
+    // public float lifeY = -10f;
 
-    [Header("shoot")]
-    public float fireRate = 1.5f;
-    private float timer;
+    [Header("curve movement")]
+    public float speed = 3f;
+    public AnimationCurve horizontalCurve;
+    public float curveWidth = 2f;
+
+    [Header("config")]
+    public float lifeY = -10f;
+    private float fireRate = 1.5f;
+
+    public float timer;
+    public float age;
+    private Vector3 startPos;
+
+
+    // [Header("shoot")]
+    // public float fireRate = 1.5f;
+    // private float timer;
     private BasePattern myPattern;
 
     void Start()
     {
         myPattern = GetComponent<BasePattern>();
         timer = fireRate * .8f; // delay first shot
+        startPos = transform.position;
     }
 
     void Update()
     {
-        // enemy downwards
-        transform.Translate(Vector2.down * speed * Time.deltaTime, Space.World);
+        age += Time.deltaTime;
+        float newY = startPos.y - (speed * age);
+        float curveX = horizontalCurve.Evaluate(age);
+        float newX = startPos.x + (curveX * curveWidth);
 
-        // shoot
+        transform.position = new Vector3(newX, newY, 0);
+
         timer += Time.deltaTime;
         if (timer >= fireRate)
         {
@@ -32,9 +50,9 @@ public class EnemyController : MonoBehaviour
             }
             timer = 0f;
         }
-        if (transform.position.y < lifeY)
+        if (transform.position.y <= lifeY)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }
