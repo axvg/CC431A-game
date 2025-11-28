@@ -6,7 +6,7 @@ public class Wave
 {
     public string name;
     // public BasePattern pattern;
-    public GameObject enemyPrefab;
+    public GameObject[] enemyOptions;
     public float duration;
     public float spawnRate;
 }
@@ -45,7 +45,14 @@ public class PatternController : MonoBehaviour
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= currentWave.spawnRate)
         {
-            SpawnEnemy(currentWave.enemyPrefab);
+            if (currentWave.enemyOptions.Length > 0)
+            {
+                int randomIndex = Random.Range(0, currentWave.enemyOptions.Length);
+                GameObject randomEnemy = currentWave.enemyOptions[randomIndex];
+                
+                SpawnEnemy(randomEnemy);
+            }
+            
             spawnTimer = 0f;
         }
 
