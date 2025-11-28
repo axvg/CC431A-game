@@ -5,9 +5,10 @@ using System.Collections.Generic;
 public class Wave
 {
     public string name;
-    public BasePattern pattern;
+    // public BasePattern pattern;
+    public GameObject enemyPrefab;
     public float duration;
-    public float fireRate;
+    public float spawnRate;
 }
 
 public class PatternController : MonoBehaviour
@@ -23,6 +24,8 @@ public class PatternController : MonoBehaviour
     public float fireRate = .5f;
     private float timer;
 
+    public float xSpawnLimit = 8f;
+    private float spawnTimer;
     // public BasePattern pattern;
 
     void Start()
@@ -38,15 +41,12 @@ public class PatternController : MonoBehaviour
             return;
 
         Wave currentWave = levelWaves[currentWaveIndex];
-        fireTimer += Time.deltaTime;
 
-        if (fireRate > 0f && fireTimer >= currentWave.fireRate)
+        spawnTimer += Time.deltaTime;
+        if (spawnTimer >= currentWave.spawnRate)
         {
-            if (currentWave.pattern != null)
-            {
-                currentWave.pattern.Trigger(transform);
-            }
-            fireTimer = 0f;
+            SpawnEnemy(currentWave.enemyPrefab);
+            spawnTimer = 0f;
         }
 
         waveTimer += Time.deltaTime;
@@ -54,6 +54,16 @@ public class PatternController : MonoBehaviour
         {
             NextWave();
         }
+    }
+
+    void SpawnEnemy(GameObject prefab)
+    {
+        if (prefab == null) return;
+
+        float randomX = Random.Range(-xSpawnLimit, xSpawnLimit);
+        Vector3 spawnPos = new Vector3(randomX, 6f, 0);
+
+        Instantiate(prefab, spawnPos, Quaternion.identity); // enemy in space
     }
 
     void NextWave()
