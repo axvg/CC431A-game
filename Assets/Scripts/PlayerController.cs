@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [Header("Settings")]
     public float speed = 8f;
     public float focusSpeed = 3f;
+    public float slowMotionFactor = 0.5f;
     public Vector2 boundary = new Vector2(8.5f, 4.5f);
 
     public BulletColor playerColor;
@@ -81,14 +82,21 @@ public class PlayerController : MonoBehaviour
 
         if (canFocus && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
         {
-            currentSpeed = focusSpeed;
+            // currentSpeed = focusSpeed;
+            Time.timeScale = slowMotionFactor;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            Time.fixedDeltaTime = 0.02f;
         }
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
         Vector2 moveDir = new Vector2(x, y).normalized;
-        transform.Translate(moveDir * currentSpeed * Time.deltaTime);
+        transform.Translate(moveDir * currentSpeed * Time.unscaledDeltaTime);
 
     
         Vector3 pos = transform.position;
