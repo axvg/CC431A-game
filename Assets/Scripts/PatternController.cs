@@ -9,7 +9,10 @@ public class PatternController : MonoBehaviour
     public List<LevelData> gameLevels;
     
     [Header("UI References")]
-    public Text messageText;
+    public Text messageText; 
+    public Text timerText;
+
+    private float levelTotalTime = 0f;
 
     [Header("curr state")]
     public int currentLevelIndex = 0;
@@ -76,13 +79,22 @@ public class PatternController : MonoBehaviour
 
         Debug.Log("start lvl: " + (index + 1));
 
-        StartCoroutine(ShowLevelName(index + 1)); 
+        levelTotalTime = 0f;
+        StartCoroutine(ShowLevelName(index + 1));
     }
 
     void Update()
     {
         if (!isGameActive || currentLevelData == null) return;
 
+
+        levelTotalTime += Time.deltaTime;
+        if (timerText != null)
+        {
+            int minutes = Mathf.FloorToInt(levelTotalTime / 60F);
+            int seconds = Mathf.FloorToInt(levelTotalTime % 60F);
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
         if (currentLevelData.waves.Count == 0) return;
 
         Wave currentWave = currentLevelData.waves[currentWaveIndex];
