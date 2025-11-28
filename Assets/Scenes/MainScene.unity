@@ -388,7 +388,7 @@ MonoBehaviour:
   gameLevels:
   - {fileID: 11400000, guid: f4e852d0ab0971748b332b32d1c1a9f8, type: 2}
   - {fileID: 11400000, guid: f10e8c039fda7d641accdd0113deb017, type: 2}
-  messageText: {fileID: 0}
+  messageText: {fileID: 30434360}
   currentLevelIndex: 0
 --- !u!1 &519420028
 GameObject:

@@ -16,7 +16,7 @@ MonoBehaviour:
   waves:
   - name: 
     enemyOptions:
-    - {fileID: 3201272136479284253, guid: b161d42e8746818428d0a56dcb87af6d, type: 3}
+    - {fileID: 3201272136479284253, guid: 341297788d008fb4b921f125ab97f311, type: 3}
     spawnRate: 2
     duration: 20
   levelInfo: 'duracion total: 20 seg (0:20)
