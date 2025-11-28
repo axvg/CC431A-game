@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5743292941140404109}
   - component: {fileID: 5641816719812324073}
   - component: {fileID: 3253890484822764736}
-  - component: {fileID: 1838579515532573579}
+  - component: {fileID: 1075800924259321654}
   m_Layer: 0
-  m_Name: Enemy_Curve
+  m_Name: Enemy_S_Level3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,26 +197,35 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1.2311707
-      value: 0.9810524
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1.6833138
-      value: 0.2373183
-      inSlope: -1.4852189
-      outSlope: -1.4852189
+      time: 0.525277
+      value: 0.5463352
+      inSlope: 0.20674379
+      outSlope: 0.20674379
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 2.1244383
-      value: 0.025268584
+      time: 1.49491
+      value: 0.13298607
+      inSlope: 1.3433099
+      outSlope: 1.3433099
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.5688157
+      value: 0.9179349
+      inSlope: 0.63681304
+      outSlope: 0.63681304
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2.2213745
+      value: 0.14144897
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -230,7 +239,7 @@ MonoBehaviour:
   lifeY: -10
   timer: 0
   age: 0
---- !u!114 &1838579515532573579
+--- !u!114 &1075800924259321654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,10 +248,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3201272136479284253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6acc5cc6624764c4886c6284bd674e46, type: 3}
+  m_Script: {fileID: 11500000, guid: 94d8908a846409847931633d6c828ec3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PatternSpiral
+  m_EditorClassIdentifier: Assembly-CSharp::PatternSineWave
   patternColor: 0
-  bulletArms: 50
-  angleStep: 5
-  reverse: 0
+  streams: 10
+  angleWidth: 45
+  frequency: 5

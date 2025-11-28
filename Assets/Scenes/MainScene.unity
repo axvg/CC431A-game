@@ -388,6 +388,7 @@ MonoBehaviour:
   gameLevels:
   - {fileID: 11400000, guid: f4e852d0ab0971748b332b32d1c1a9f8, type: 2}
   - {fileID: 11400000, guid: f10e8c039fda7d641accdd0113deb017, type: 2}
+  - {fileID: 11400000, guid: 44aafc9e2398aa142a568af4279db30c, type: 2}
   messageText: {fileID: 30434360}
   timerText: {fileID: 821666795}
   currentLevelIndex: 0
@@ -642,7 +643,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: -4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
