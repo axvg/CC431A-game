@@ -1,42 +1,69 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
-
-// [System.Serializable] 
-// public class Wave
-// {
-//     public string name;
-//     // public BasePattern pattern;
-//     public GameObject[] enemyOptions;
-//     public float duration;
-//     public float spawnRate;
-// }
 
 public class PatternController : MonoBehaviour
 {
-[Header("Configuración de Niveles")]
+    [Header("levels config")]
     public List<LevelData> gameLevels;
-    public bool loopGame = false;
+    
+    [Header("UI References")]
+    public Text messageText;
 
-    [Header("Estado Actual (No tocar)")]
+    [Header("curr state")]
     public int currentLevelIndex = 0;
-    private int currentWaveIndex = 0;
+    
     private LevelData currentLevelData;
-
+    private int currentWaveIndex = 0;
     private float waveTimer;
     private float spawnTimer;
-    public float xSpawnLimit = 8f;
+    private float xSpawnLimit = 8f;
+    private bool isGameActive = false;
 
     void Start()
     {
+        if (messageText == null)
+        {
+            Debug.LogError("missing messageText");
+            return;
+        }
+
+        StartCoroutine(StartGameSequence());
+    }
+
+    IEnumerator StartGameSequence()
+    {
+        isGameActive = false;
+        Time.timeScale = 1;
+        
+        messageText.text = "GET READY";
+        yield return new WaitForSeconds(1f);
+
+        messageText.text = "3";
+        yield return new WaitForSeconds(1f);
+
+        messageText.text = "2";
+        yield return new WaitForSeconds(1f);
+
+        messageText.text = "1";
+        yield return new WaitForSeconds(1f);
+
+        messageText.text = "GO!";
+        yield return new WaitForSeconds(0.5f);
+
+        messageText.text = "";
+        
         LoadLevel(0);
+        isGameActive = true;
     }
 
     void LoadLevel(int index)
     {
         if (index >= gameLevels.Count)
         {
-            Debug.Log("end game");
-            currentLevelData = null; // stop all
+            StartCoroutine(VictorySequence());
+            currentLevelData = null;
             return;
         }
 
@@ -46,13 +73,15 @@ public class PatternController : MonoBehaviour
         currentWaveIndex = 0;
         waveTimer = 0;
         spawnTimer = 0;
-        
-        Debug.Log("Iniciando: " + currentLevelData.levelName);
+
+        Debug.Log("start lvl: " + (index + 1));
+
+        StartCoroutine(ShowLevelName(index + 1)); 
     }
 
     void Update()
     {
-        if (currentLevelData == null) return;
+        if (!isGameActive || currentLevelData == null) return;
 
         if (currentLevelData.waves.Count == 0) return;
 
@@ -70,25 +99,11 @@ public class PatternController : MonoBehaviour
             spawnTimer = 0f;
         }
 
-        // 2. control de tiempo de oleada
+        // 2. control wave duration
         waveTimer += Time.deltaTime;
         if (waveTimer >= currentWave.duration)
         {
             NextWave();
-        }
-    }
-
-    void NextWave()
-    {
-        waveTimer = 0;
-        currentWaveIndex++;
-
-        // if all waves completed
-        if (currentWaveIndex >= currentLevelData.waves.Count)
-        {
-            Debug.Log("Nivel Completado: " + currentLevelData.levelName);
-
-            LoadLevel(currentLevelIndex + 1);
         }
     }
 
@@ -98,11 +113,12 @@ public class PatternController : MonoBehaviour
 
         float randomX = Random.Range(-xSpawnLimit, xSpawnLimit);
         Vector3 spawnPos = new Vector3(randomX, 6f, 0);
-
-        GameObject newEnemyObj = Instantiate(prefab, spawnPos, prefab.transform.rotation);
+        
+        // GameObject newEnemyObj = Instantiate(prefab, spawnPos, prefab.transform.rotation);
+        GameObject newEnemyObj = Instantiate(prefab, spawnPos, Quaternion.Euler(0, 0, 180));
 
         BulletColor chosenColor = BulletColor.Red;
-
+        
         if (currentLevelData.colorMode == LevelColorMode.Constant)
         {
             chosenColor = currentLevelData.constantColor;
@@ -121,5 +137,51 @@ public class PatternController : MonoBehaviour
         {
             enemyScript.SetEnemyColor(chosenColor);
         }
+    }
+
+    void NextWave()
+    {
+        waveTimer = 0;
+        currentWaveIndex++;
+
+        if (currentWaveIndex >= currentLevelData.waves.Count)
+        {
+            StartCoroutine(LevelCompleteSequence());
+        }
+    }
+
+    IEnumerator LevelCompleteSequence()
+    {
+        isGameActive = false;
+        
+        messageText.text = "LEVEL COMPLETE!";
+        
+        Time.timeScale = 0; // sstop time
+
+        yield return new WaitForSecondsRealtime(3f);
+
+        messageText.text = "";
+        
+        Time.timeScale = 1; 
+        
+        LoadLevel(currentLevelIndex + 1);
+        
+        isGameActive = true;
+    }
+
+    IEnumerator VictorySequence()
+    {
+        messageText.text = "YOU WIN!";
+        Time.timeScale = 0; // freeze forever !!!!!
+        yield return null;
+    }
+
+    IEnumerator ShowLevelName(int levelNumber)
+    {
+        messageText.text = "LEVEL " + levelNumber;
+        
+        yield return new WaitForSeconds(2f);
+
+        messageText.text = "";
     }
 }
