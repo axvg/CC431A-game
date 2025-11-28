@@ -86,7 +86,7 @@ public class PatternController : MonoBehaviour
         PlayerController player = FindObjectOfType<PlayerController>();
         if (player != null)
         {
-            player.ConfigureColors(currentLevelData.playerColors);
+            player.ConfigureAbilities(currentLevelData.playerColors, currentLevelData.allowFocus);
         }
     }
 

@@ -46,5 +46,7 @@ MonoBehaviour:
     enemies aprox: 12'
   colorMode: 1
   playerColors: 000000000100000002000000
+  allowFocus: 1
+  startMessage: HOLD <SHIFT> TO SLOW DOWN
   constantColor: 1
   randomColors: 000000000100000002000000

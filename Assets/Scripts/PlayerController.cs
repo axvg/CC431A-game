@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Settings")]
     public float speed = 8f;
+    public float focusSpeed = 3f;
     public Vector2 boundary = new Vector2(8.5f, 4.5f);
 
     public BulletColor playerColor;
@@ -15,10 +16,24 @@ public class PlayerController : MonoBehaviour
     private List<BulletColor> availableColors = new List<BulletColor>();
     private int colorIndex = 0;
 
+    private bool canFocus = false;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         // UpdateColorVisuals();
+    }
+
+    public void ConfigureAbilities(List<BulletColor> newColors, bool enableFocus)
+    {
+        availableColors = new List<BulletColor>(newColors);
+        if (availableColors.Count > 0)
+        {
+            colorIndex = 0;
+            SetColor(availableColors[0]);
+        }
+        
+        canFocus = enableFocus;
     }
 
     void SwapColor()
@@ -62,11 +77,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        float currentSpeed = speed;
+
+        if (canFocus && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
+        {
+            currentSpeed = focusSpeed;
+        }
+
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
         Vector2 moveDir = new Vector2(x, y).normalized;
-        transform.Translate(moveDir * speed * Time.deltaTime);
+        transform.Translate(moveDir * currentSpeed * Time.deltaTime);
 
     
         Vector3 pos = transform.position;

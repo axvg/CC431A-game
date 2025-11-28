@@ -33,6 +33,7 @@ public class LevelData : ScriptableObject
 
     [Header("player config")]
     public List<BulletColor> playerColors;
+    public bool allowFocus;
 
     [Header("tutorial msg")]
     [TextArea]
