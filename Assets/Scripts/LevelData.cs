@@ -31,6 +31,8 @@ public class LevelData : ScriptableObject
     [Header("Level color settings")]
     public LevelColorMode colorMode = LevelColorMode.Constant;
 
+    [Header("player config")]
+    public List<BulletColor> playerColors;
 
     public BulletColor constantColor;
     public BulletColor[] randomColors;

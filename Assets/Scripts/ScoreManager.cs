@@ -6,25 +6,32 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
 
     public Text scoreText;
-    private int currScore = 0;
+    public Text livesText;
+
+    private int currentScore = 0;
+    private int currentLives = 5;
 
     void Awake()
     {
         Instance = this;
-        UpdateScoreText();
+        UpdateUI();
     }
 
-    public void AddScore(int points)
+    public void AddScore(int amount)
     {
-        currScore += points;
-        UpdateScoreText();
+        currentScore += amount;
+        UpdateUI();
     }
 
-    private void UpdateScoreText()
+    public void LoseLife()
     {
-        if (scoreText != null)
-        {
-            scoreText.text = "Score: " + currScore.ToString();
-        }
+        currentLives--; 
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        if (scoreText != null) scoreText.text = "Score: " + currentScore;
+        if (livesText != null) livesText.text = "Lives: " + currentLives;
     }
 }

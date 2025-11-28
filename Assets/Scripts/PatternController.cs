@@ -83,6 +83,11 @@ public class PatternController : MonoBehaviour
 
         levelTotalTime = 0f;
         StartCoroutine(ShowLevelName(index + 1));
+        PlayerController player = FindObjectOfType<PlayerController>();
+        if (player != null)
+        {
+            player.ConfigureColors(currentLevelData.playerColors);
+        }
     }
 
     void Update()

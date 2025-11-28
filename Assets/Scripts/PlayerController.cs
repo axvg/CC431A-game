@@ -1,18 +1,24 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Settings")]
-    public float speed = 10f;
+    public float speed = 8f;
     public Vector2 boundary = new Vector2(8.5f, 4.5f);
 
-    public BulletColor playerColor = BulletColor.Red;
+    public BulletColor playerColor;
     private SpriteRenderer sr;
+
+
+    private List<BulletColor> availableColors = new List<BulletColor>();
+    private int colorIndex = 0;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        UpdateColorVisuals();
+        // UpdateColorVisuals();
     }
 
     void SwapColor()
@@ -27,6 +33,16 @@ public class PlayerController : MonoBehaviour
         }
 
         UpdateColorVisuals();
+    }
+
+    public void ConfigureColors(List<BulletColor> newColors)
+    {
+        availableColors = new List<BulletColor>(newColors);
+        if (availableColors.Count > 0)
+        {
+            colorIndex = 0;
+            SetColor(availableColors[0]);
+        }
     }
 
     void UpdateColorVisuals()
@@ -60,30 +76,55 @@ public class PlayerController : MonoBehaviour
     
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SwapColor();
+            if (availableColors.Count > 1)
+            {
+                CycleColor();
+            }
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void CycleColor()
     {
-        Bullet b = other.GetComponent<Bullet>();
-        if (b != null)
+        colorIndex++;
+        if (colorIndex >= availableColors.Count)
         {
-            if (b.bc != playerColor)
+            colorIndex = 0;
+        }
+        SetColor(availableColors[colorIndex]);
+    }
+
+    void SetColor(BulletColor c)
+    {
+        playerColor = c;
+        switch (c)
+        {
+            case BulletColor.Red: sr.color = Color.red; break;
+            case BulletColor.Blue: sr.color = Color.blue; break;
+            case BulletColor.Green: sr.color = Color.green; break;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Bullet bullet = collision.GetComponent<Bullet>();
+
+        if (bullet != null)
+        {
+            if (bullet.bc == playerColor)
             {
-                Debug.Log("Game Over");
+                if (ScoreManager.Instance != null) ScoreManager.Instance.AddScore(100);
+                bullet.ReturnToPool();
             }
             else
             {
-                Debug.Log("safe");
-                if (ScoreManager.Instance != null)
+                Debug.Log("¡Daño Recibido!");
+                
+                if (ScoreManager.Instance != null) 
                 {
-                    ScoreManager.Instance.AddScore(1);
+                    ScoreManager.Instance.LoseLife();
                 }
-                b.ReturnToPool();
+                bullet.ReturnToPool();
             }
-
-            // b.Desactivate();
         }
     }
 }

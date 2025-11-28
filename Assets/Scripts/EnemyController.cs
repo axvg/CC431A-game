@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour
                     sr.color = Color.green;
                     break;
                 default:
-                    sr.color = Color.white;
+                    sr.color = Color.green;
                     break;
             }
         }
