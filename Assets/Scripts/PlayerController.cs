@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         // UpdateColorVisuals();
     }
 
-    public void ConfigureAbilities(List<BulletColor> newColors, bool enableFocus)
+    public void ConfigureAbilities(List<BulletColor> newColors, bool enableFocus) 
     {
         availableColors = new List<BulletColor>(newColors);
         if (availableColors.Count > 0)

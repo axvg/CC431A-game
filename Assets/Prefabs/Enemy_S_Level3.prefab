@@ -252,8 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatternLotus
   patternColor: 0
-  petals: 20
-  bulletCount: 15
+  petals: 30
+  bulletCount: 20
   baseSpeed: 5
   petalSpeedVar: 3
   rotationSpeed: 20

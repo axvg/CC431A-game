@@ -225,7 +225,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlowerPattern
   patternColor: 0
-  petals: 5
-  bulletCount: 50
+  petals: 20
+  bulletCount: 80
   maxSpeed: 10
   minSpeed: 2
+  layers: 3
+  layerSpeedDiff: 1
+  rotationSpeed: 30

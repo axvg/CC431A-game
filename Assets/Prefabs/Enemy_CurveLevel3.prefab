@@ -270,5 +270,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatternPhyllotaxis
   patternColor: 0
-  bulletAmount: 80
-  spread: 0.5
+  bulletAmount: 100
+  spread: 1

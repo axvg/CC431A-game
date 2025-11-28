@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatternSpiral
   patternColor: 0
-  bulletArms: 15
-  angleStep: 20
+  bulletArms: 50
+  angleStep: 10
   reverse: 0
+  angleStepRate: 0
