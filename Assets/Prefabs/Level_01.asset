@@ -14,19 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelName: Nivel 1
   waves:
-  - name: 
+  - name: enemy0
     enemyOptions:
-    - {fileID: 3201272136479284253, guid: 341297788d008fb4b921f125ab97f311, type: 3}
+    - {fileID: 3201272136479284253, guid: c64f859c91efeb640a77a1faa9fcd92b, type: 3}
+    spawnRate: 3
+    duration: 10
+    spawnXPositions:
+    - -4
+    - 4
+  - name: enemys
+    enemyOptions:
+    - {fileID: 3201272136479284253, guid: 01b4c9fcbab2df244848f84e9cfcb977, type: 3}
+    spawnRate: 5
+    duration: 25
+    spawnXPositions:
+    - -5
+    - 5
+  - name: enemy1
+    enemyOptions:
+    - {fileID: 3201272136479284253, guid: 7a2affd5b37f30d478f3ff1fe1c3fc4e, type: 3}
     spawnRate: 4
     duration: 20
-  - name: 
-    enemyOptions:
-    - {fileID: 3201272136479284253, guid: b161d42e8746818428d0a56dcb87af6d, type: 3}
-    spawnRate: 5
-    duration: 10
-  levelInfo: 'duracion total: 30 seg (0:30)
+    spawnXPositions:
+    - -5
+    - 5
+  levelInfo: 'duracion total: 55 seg (0:55)
 
-    enemies aprox: 7'
+    enemies aprox: 14'
   colorMode: 0
   constantColor: 1
   randomColors: 

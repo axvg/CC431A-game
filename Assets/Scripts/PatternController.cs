@@ -24,6 +24,8 @@ public class PatternController : MonoBehaviour
     private float xSpawnLimit = 8f;
     private bool isGameActive = false;
 
+    private int spawnIndex = 0;
+
     void Start()
     {
         if (messageText == null)
@@ -106,7 +108,7 @@ public class PatternController : MonoBehaviour
             if (currentWave.enemyOptions.Length > 0)
             {
                 int r = Random.Range(0, currentWave.enemyOptions.Length);
-                SpawnEnemy(currentWave.enemyOptions[r]);
+                SpawnEnemy(currentWave.enemyOptions[r], currentWave);
             }
             spawnTimer = 0f;
         }
@@ -119,12 +121,21 @@ public class PatternController : MonoBehaviour
         }
     }
 
-    void SpawnEnemy(GameObject prefab)
+    void SpawnEnemy(GameObject prefab, Wave waveData)
     {
         if (prefab == null) return;
+        float finalX = 0f;
 
-        float randomX = Random.Range(-xSpawnLimit, xSpawnLimit);
-        Vector3 spawnPos = new Vector3(randomX, 6f, 0);
+        if (waveData.spawnXPositions != null && waveData.spawnXPositions.Length > 0)
+        {
+            finalX = waveData.spawnXPositions[spawnIndex];
+            spawnIndex = (spawnIndex + 1) % waveData.spawnXPositions.Length;
+        }
+        else
+        {
+            finalX = Random.Range(-xSpawnLimit, xSpawnLimit);
+        }
+        Vector3 spawnPos = new Vector3(finalX, 6f, 0);
         
         // GameObject newEnemyObj = Instantiate(prefab, spawnPos, prefab.transform.rotation);
         GameObject newEnemyObj = Instantiate(prefab, spawnPos, Quaternion.Euler(0, 0, 180));
@@ -153,6 +164,7 @@ public class PatternController : MonoBehaviour
 
     void NextWave()
     {
+        spawnIndex = 0;
         waveTimer = 0;
         currentWaveIndex++;
 

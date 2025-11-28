@@ -8,6 +8,8 @@ public class Wave
     public GameObject[] enemyOptions;
     public float spawnRate;
     public float duration;
+
+    public float[] spawnXPositions;
 }
 
 public enum LevelColorMode

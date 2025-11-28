@@ -13,17 +13,10 @@ MonoBehaviour:
   m_Name: Level_02
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelName: Nivel 1
-  waves:
-  - name: 
-    enemyOptions:
-    - {fileID: 3201272136479284253, guid: c70303419f443d445b64e84826f641a5, type: 3}
-    spawnRate: 10
-    duration: 8
-  - name: 
-    enemyOptions:
-    - {fileID: 3201272136479284253, guid: c70303419f443d445b64e84826f641a5, type: 3}
-    - {fileID: 3201272136479284253, guid: c70303419f443d445b64e84826f641a5, type: 3}
-    - {fileID: 3201272136479284253, guid: c70303419f443d445b64e84826f641a5, type: 3}
-    - {fileID: 3201272136479284253, guid: c70303419f443d445b64e84826f641a5, type: 3}
-    spawnRate: 2
-    duration: 5
+  waves: []
+  levelInfo: 'duracion total: 0 seg (0:00)
+
+    enemies aprox: 0'
+  colorMode: 0
+  constantColor: 0
+  randomColors: 
