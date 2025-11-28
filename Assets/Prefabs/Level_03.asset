@@ -16,31 +16,34 @@ MonoBehaviour:
   waves:
   - name: 
     enemyOptions:
-    - {fileID: 3201272136479284253, guid: 5ac10258d07b6b841904d9337f6442f7, type: 3}
+    - {fileID: 3201272136479284253, guid: aae7951ab51357c4882d9fed87a467bc, type: 3}
     spawnRate: 5
     duration: 15
     spawnXPositions:
     - -4
+    - 0
     - 4
   - name: 
     enemyOptions:
-    - {fileID: 3201272136479284253, guid: 8a985768d418aeb4f8354b7a603826a6, type: 3}
+    - {fileID: 3201272136479284253, guid: 77ef9632a72e56b40926172abbb18b7d, type: 3}
     spawnRate: 4
     duration: 20
     spawnXPositions:
     - -4
+    - 0
     - 4
   - name: 
     enemyOptions:
-    - {fileID: 3201272136479284253, guid: eb55e0efb8b5db1479b74241e0dd56d2, type: 3}
+    - {fileID: 3201272136479284253, guid: 9ef34a19720494445b65b9c28704dc6a, type: 3}
     spawnRate: 5
     duration: 20
     spawnXPositions:
     - -4
     - 0
+    - 4
   levelInfo: 'duracion total: 55 seg (0:55)
 
     enemies aprox: 12'
   colorMode: 1
   constantColor: 1
-  randomColors: 0000000001000000
+  randomColors: 000000000100000002000000

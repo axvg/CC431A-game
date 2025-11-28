@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5743292941140404109}
   - component: {fileID: 5641816719812324073}
   - component: {fileID: 3253890484822764736}
-  - component: {fileID: -3096808658897860658}
+  - component: {fileID: 5255478827777250238}
   m_Layer: 0
   m_Name: EnemyFlowerCurve3
   m_TagString: Untagged
@@ -212,7 +212,7 @@ MonoBehaviour:
   lifeY: -10
   timer: 0
   age: 0
---- !u!114 &-3096808658897860658
+--- !u!114 &5255478827777250238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,11 +221,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3201272136479284253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce873a32bac83974fa8606400074dd56, type: 3}
+  m_Script: {fileID: 11500000, guid: fcc512a60926f7a45811e6e773098da6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FlowerPattern
+  m_EditorClassIdentifier: Assembly-CSharp::PatternWhip
   patternColor: 0
-  petals: 20
-  bulletCount: 50
-  maxSpeed: 20
-  minSpeed: 10
+  arms: 20
+  bulletsPerArm: 10
+  angleDelay: 5
+  baseRotationSpeed: 15

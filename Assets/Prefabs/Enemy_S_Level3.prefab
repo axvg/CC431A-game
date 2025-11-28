@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5743292941140404109}
   - component: {fileID: 5641816719812324073}
   - component: {fileID: 3253890484822764736}
-  - component: {fileID: 1075800924259321654}
+  - component: {fileID: 5340433944764412940}
   m_Layer: 0
   m_Name: Enemy_S_Level3
   m_TagString: Untagged
@@ -239,7 +239,7 @@ MonoBehaviour:
   lifeY: -10
   timer: 0
   age: 0
---- !u!114 &1075800924259321654
+--- !u!114 &5340433944764412940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,10 +248,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3201272136479284253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94d8908a846409847931633d6c828ec3, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ada42d96f052e479eff205963fd980, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PatternSineWave
+  m_EditorClassIdentifier: Assembly-CSharp::PatternLotus
   patternColor: 0
-  streams: 10
-  angleWidth: 45
-  frequency: 5
+  petals: 20
+  bulletCount: 15
+  baseSpeed: 5
+  petalSpeedVar: 3
+  rotationSpeed: 20

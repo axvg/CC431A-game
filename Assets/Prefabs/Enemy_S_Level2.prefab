@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5743292941140404109}
   - component: {fileID: 5641816719812324073}
   - component: {fileID: 3253890484822764736}
-  - component: {fileID: 3781111670083915055}
+  - component: {fileID: -71226696341764289}
   m_Layer: 0
   m_Name: Enemy_S_Level2
   m_TagString: Untagged
@@ -239,7 +239,7 @@ MonoBehaviour:
   lifeY: -10
   timer: 0
   age: 0
---- !u!114 &3781111670083915055
+--- !u!114 &-71226696341764289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,10 +248,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3201272136479284253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2d34d0a61be1ae4180dbcade10abdf9, type: 3}
+  m_Script: {fileID: 11500000, guid: a8e8e491940e65a428ba2b064959b0b8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PatternGalaxy
+  m_EditorClassIdentifier: Assembly-CSharp::PatternDoubleHelix
   patternColor: 0
-  arms: 8
-  bulletsPerArm: 15
-  twistFactor: 15
+  bulletsPerWave: 10
+  rotationStep: 12

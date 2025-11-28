@@ -386,9 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatternController
   gameLevels:
-  - {fileID: 11400000, guid: f4e852d0ab0971748b332b32d1c1a9f8, type: 2}
   - {fileID: 11400000, guid: f10e8c039fda7d641accdd0113deb017, type: 2}
-  - {fileID: 11400000, guid: 44aafc9e2398aa142a568af4279db30c, type: 2}
   messageText: {fileID: 30434360}
   timerText: {fileID: 821666795}
   currentLevelIndex: 0
@@ -718,7 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d393f78d4319b4440886ffda6acc48af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 10
+  speed: 7
   boundary: {x: 8.5, y: 4.5}
   playerColor: 0
 --- !u!50 &695747594
