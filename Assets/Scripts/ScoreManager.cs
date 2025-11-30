@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -35,20 +37,19 @@ public class ScoreManager : MonoBehaviour
 
     public void LoseLife()
     {
-        currentLives--; 
         if (currentLives <= 0)
         {
-            currentLives = 0;
             isGameOver = true;
-            Debug.Log("GAME OVER -->");
-
             if (messageText != null)
             {
-                Debug.Log("MESSAGE TEXT IS NOT NULL");
                 messageText.gameObject.SetActive(true);
                 messageText.text = "GAME OVER\n but you can continue";
+                StartCoroutine(DisappearAfterSeconds(5f));
+                return;
             }
         }
+
+        currentLives--; 
         UpdateUI();
     }
 
@@ -66,4 +67,13 @@ public class ScoreManager : MonoBehaviour
         if (scoreText != null) scoreText.text = "Score: " + currentScore;
         if (livesText != null) livesText.text = "Lives: " + currentLives;
     }
+
+    IEnumerator DisappearAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        if (messageText != null)
+        {
+            messageText.text = "";
+        }
+    }   
 }
