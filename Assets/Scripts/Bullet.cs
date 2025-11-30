@@ -34,6 +34,10 @@ public class Bullet : MonoBehaviour
             {
                 sr.color = Color.blue;
             }
+            else if (bc == BulletColor.Green)
+            {
+                sr.color = Color.green;
+            }
         }
     }
 
@@ -42,10 +46,26 @@ public class Bullet : MonoBehaviour
         lifeTime = 0;
     }
 
+    public float minSpeed = 0.5f;
+    public float maxSpeed = 20f;
+
+    // Culling bounds
+    private float xBound = 12f;
+    private float yBound = 12f;
+
     void Update()
     {
+        speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
         transform.Translate(direction.normalized * speed * Time.deltaTime);
         lifeTime += Time.deltaTime;
+
+        // Check bounds
+        if (Mathf.Abs(transform.position.x) > xBound || Mathf.Abs(transform.position.y) > yBound)
+        {
+            ReturnToPool();
+            return;
+        }
+
         if (lifeTime >= maxLifeTime)
         {
             // Desactivate();

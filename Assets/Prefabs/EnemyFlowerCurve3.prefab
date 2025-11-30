@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatternWhip
   patternColor: 0
-  arms: 20
+  arms: 25
   bulletsPerArm: 10
   angleDelay: 5
   baseRotationSpeed: 15

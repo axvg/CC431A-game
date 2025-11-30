@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5641816719812324073}
   - component: {fileID: 3253890484822764736}
   - component: {fileID: 1838579515532573579}
+  - component: {fileID: 7293596697035168113}
   m_Layer: 0
   m_Name: Enemy_Curve
   m_TagString: Untagged
@@ -237,12 +238,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3201272136479284253}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6acc5cc6624764c4886c6284bd674e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatternSpiral
   patternColor: 0
-  bulletArms: 50
+  bulletArms: 15
   angleStep: 5
   reverse: 0
+  angleStepRate: 0
+--- !u!114 &7293596697035168113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3201272136479284253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c16dfd4bf86634584863606c1d4340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatternTouhou
+  patternColor: 0
+  ways: 12
+  layers: 3
+  angleStepPerTrigger: 13
+  layerSpeedDiff: 0.5
+  baseSpeed: 4
+  alternateColors: 1

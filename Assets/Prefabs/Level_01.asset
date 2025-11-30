@@ -43,6 +43,7 @@ MonoBehaviour:
     enemies aprox: 14'
   colorMode: 0
   playerColors: 00000000
-  startMessage: MOVE AND AVOID BULLETS!
+  allowFocus: 0
+  startMessage: Move and avoid the bullets!
   constantColor: 1
   randomColors: 

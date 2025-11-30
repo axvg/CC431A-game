@@ -252,5 +252,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatternDoubleHelix
   patternColor: 0
-  bulletsPerWave: 10
-  rotationStep: 12
+  bulletsPerWave: 50
+  rotationStep: 6
