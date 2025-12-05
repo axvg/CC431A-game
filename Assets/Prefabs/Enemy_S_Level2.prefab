@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3253890484822764736}
   - component: {fileID: 6066789185564034642}
   - component: {fileID: 5377553592955298071}
+  - component: {fileID: 8734012588986007616}
   m_Layer: 0
   m_Name: Enemy_S_Level2
   m_TagString: Untagged
@@ -247,7 +248,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3201272136479284253}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13d122af142ea75419986c374e985733, type: 3}
   m_Name: 
@@ -264,7 +265,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3201272136479284253}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8e8e491940e65a428ba2b064959b0b8, type: 3}
   m_Name: 
@@ -272,3 +273,19 @@ MonoBehaviour:
   patternColor: 0
   bulletsPerWave: 15
   rotationStep: 5
+--- !u!114 &8734012588986007616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3201272136479284253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d34d0a61be1ae4180dbcade10abdf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatternGalaxy
+  patternColor: 0
+  arms: 10
+  bulletsPerArm: 10
+  twistFactor: 20

@@ -32,22 +32,22 @@ MonoBehaviour:
     - 4
   - name: 
     enemyOptions:
-    - {fileID: 3201272136479284253, guid: eb55e0efb8b5db1479b74241e0dd56d2, type: 3}
-    spawnRate: 5
+    - {fileID: 3201272136479284253, guid: 8a985768d418aeb4f8354b7a603826a6, type: 3}
+    spawnRate: 4
     duration: 20
     spawnXPositions:
     - -4
     - 0
   levelInfo: 'duracion total: 55 seg (0:55)
 
-    enemies aprox: 12'
+    enemies aprox: 13'
   colorMode: 1
   playerColors: 0000000001000000
   allowFocus: 0
   startMessage: 'Press<SPACE> to change your color!
 
     same color = immune'
-  levelMusic: {fileID: 8300000, guid: 676c42b4dd5dada46b8b457c3dff7a7e, type: 3}
-  startMusic: {fileID: 8300000, guid: 694430bff079a7d46870b586303b9e25, type: 3}
+  levelMusic: {fileID: 8300000, guid: 694430bff079a7d46870b586303b9e25, type: 3}
+  startMusic: {fileID: 8300000, guid: 676c42b4dd5dada46b8b457c3dff7a7e, type: 3}
   constantColor: 1
   randomColors: 0000000001000000
