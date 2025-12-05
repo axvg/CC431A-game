@@ -39,6 +39,10 @@ public class LevelData : ScriptableObject
     [TextArea]
     public string startMessage;
 
+    [Header("audios")]
+    public AudioClip levelMusic;
+    public AudioClip startMusic;
+
     public BulletColor constantColor;
     public BulletColor[] randomColors;
 

@@ -12,6 +12,9 @@ public class PatternController : MonoBehaviour
     public Text messageText; 
     public Text timerText;
 
+    [Header("Audio")]
+    public AudioSource musicSource;
+
     private float levelTotalTime = 0f;
     private int lastSeconds = -1;
 
@@ -81,6 +84,18 @@ public class PatternController : MonoBehaviour
         spawnTimer = 0;
 
         Debug.Log("start lvl: " + (index + 1));
+
+        if (musicSource != null)
+        {
+            musicSource.Stop();
+            if (currentLevelData.startMusic != null)
+            {
+                musicSource.clip = currentLevelData.startMusic;
+                musicSource.volume = 0.3f;
+                musicSource.loop = false;
+                musicSource.Play();
+            }
+        }
 
         levelTotalTime = 0f;
         StartCoroutine(ShowLevelName(index + 1));
@@ -191,6 +206,8 @@ public class PatternController : MonoBehaviour
         
         messageText.text = "LEVEL COMPLETE!";
         
+        if (musicSource != null) musicSource.Stop();
+        
         Time.timeScale = 0; // sstop time
 
         yield return new WaitForSecondsRealtime(3f);
@@ -207,6 +224,7 @@ public class PatternController : MonoBehaviour
     IEnumerator VictorySequence()
     {
         messageText.text = "YOU WIN!";
+        if (musicSource != null) musicSource.Stop();
         Time.timeScale = 0; // freeze forever !!!!!
         yield return null;
     }
@@ -226,5 +244,13 @@ public class PatternController : MonoBehaviour
         }
         
         messageText.text = "";
+
+        if (musicSource != null && currentLevelData.levelMusic != null)
+        {
+            musicSource.clip = currentLevelData.levelMusic;
+            musicSource.volume = 0.3f;
+            musicSource.loop = true;
+            musicSource.Play();
+        }
     }
 }
