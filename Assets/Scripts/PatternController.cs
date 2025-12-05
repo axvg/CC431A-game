@@ -13,6 +13,7 @@ public class PatternController : MonoBehaviour
     public Text timerText;
 
     private float levelTotalTime = 0f;
+    private int lastSeconds = -1;
 
     [Header("curr state")]
     public int currentLevelIndex = 0;
@@ -100,7 +101,12 @@ public class PatternController : MonoBehaviour
         {
             int minutes = Mathf.FloorToInt(levelTotalTime / 60F);
             int seconds = Mathf.FloorToInt(levelTotalTime % 60F);
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            
+            if (seconds != lastSeconds)
+            {
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+                lastSeconds = seconds;
+            }
         }
         if (currentLevelData.waves.Count == 0) return;
 

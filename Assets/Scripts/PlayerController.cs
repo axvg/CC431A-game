@@ -90,31 +90,37 @@ public class PlayerController : MonoBehaviour
 
         if (canFocus && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
         {
-            // currentSpeed = focusSpeed;
-            Time.timeScale = slowMotionFactor;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
-            if(hitboxSr != null) hitboxSr.color = Color.white;
-
-            Color transparentColor = sr.color;
-            transparentColor.a = 0.1f;
-            sr.color = transparentColor;
+            if (Time.timeScale != slowMotionFactor)
+            {
+                Time.timeScale = slowMotionFactor;
+                Time.fixedDeltaTime = 0.02f * Time.timeScale;
+                if(hitboxSr != null) hitboxSr.color = Color.white;
+                
+                Color transparentColor = sr.color;
+                transparentColor.a = 0.1f;
+                sr.color = transparentColor;
+            }
         }
         else
         {
-            Time.timeScale = 1f;
-            Time.fixedDeltaTime = 0.02f;
-            if (hitboxVisual != null) hitboxVisual.SetActive(false);
+            if (Time.timeScale != 1f)
+            {
+                Time.timeScale = 1f;
+                Time.fixedDeltaTime = 0.02f;
+                if (hitboxVisual != null) hitboxVisual.SetActive(false);
 
-            Color opaqueColor = sr.color;
-            opaqueColor.a = 1f; 
-            sr.color = opaqueColor;
+                Color opaqueColor = sr.color;
+                opaqueColor.a = 1f; 
+                sr.color = opaqueColor;
+            }
         }
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
         Vector2 moveDir = new Vector2(x, y).normalized;
-        transform.Translate(moveDir * currentSpeed * Time.unscaledDeltaTime);
+        // transform.Translate(moveDir * currentSpeed * Time.unscaledDeltaTime);
+        transform.position += (Vector3)(moveDir * currentSpeed * Time.unscaledDeltaTime);
 
     
         Vector3 pos = transform.position;

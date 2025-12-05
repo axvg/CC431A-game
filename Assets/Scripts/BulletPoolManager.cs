@@ -7,8 +7,8 @@ public class BulletPoolManager : MonoBehaviour
 
     [Header("config")]
     public Bullet bulletPrefab;
-    public int defaultCapacity = 500;
-    public int maxCapacity = 2000;
+    public int defaultCapacity = 2000;
+    public int maxCapacity = 10000;
 
     private IObjectPool<Bullet> pool;
 
@@ -20,7 +20,7 @@ public class BulletPoolManager : MonoBehaviour
             OnTakeFromPool,
             OnReturnToPool,
             OnDestroyPoolObject,
-            true,
+            false,
             defaultCapacity,
             maxCapacity
         );

@@ -41,9 +41,11 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private float deathTime;
+
     void OnEnable()
     {
-        lifeTime = 0;
+        deathTime = Time.time + maxLifeTime;
     }
 
     public float minSpeed = 0.5f;
@@ -55,9 +57,11 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
-        transform.Translate(direction.normalized * speed * Time.deltaTime);
-        lifeTime += Time.deltaTime;
+        // speed = Mathf.Clamp(speed, minSpeed, maxSpeed); // Optimization: Assumed set correctly by spawner
+        // transform.Translate(direction * speed * Time.deltaTime); // Optimization: direction is already normalized
+        transform.position += (Vector3)(direction * speed * Time.deltaTime); // Optimization: Direct position update avoids Translate overhead
+        
+        // lifeTime += Time.deltaTime;
 
         // Check bounds
         if (Mathf.Abs(transform.position.x) > xBound || Mathf.Abs(transform.position.y) > yBound)
@@ -66,7 +70,7 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        if (lifeTime >= maxLifeTime)
+        if (Time.time >= deathTime)
         {
             // Desactivate();
             ReturnToPool();
