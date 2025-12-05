@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5743292941140404109}
   - component: {fileID: 5641816719812324073}
   - component: {fileID: 3253890484822764736}
-  - component: {fileID: -71226696341764289}
+  - component: {fileID: 6066789185564034642}
+  - component: {fileID: 5377553592955298071}
   m_Layer: 0
   m_Name: Enemy_S_Level2
   m_TagString: Untagged
@@ -239,7 +240,24 @@ MonoBehaviour:
   lifeY: -10
   timer: 0
   age: 0
---- !u!114 &-71226696341764289
+--- !u!114 &6066789185564034642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3201272136479284253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d122af142ea75419986c374e985733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatternController
+  gameLevels: []
+  messageText: {fileID: 0}
+  timerText: {fileID: 0}
+  musicSource: {fileID: 0}
+  currentLevelIndex: 0
+--- !u!114 &5377553592955298071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,5 +270,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatternDoubleHelix
   patternColor: 0
-  bulletsPerWave: 50
-  rotationStep: 6
+  bulletsPerWave: 15
+  rotationStep: 5

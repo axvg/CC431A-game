@@ -47,5 +47,7 @@ MonoBehaviour:
   startMessage: 'Press<SPACE> to change your color!
 
     same color = immune'
+  levelMusic: {fileID: 8300000, guid: 676c42b4dd5dada46b8b457c3dff7a7e, type: 3}
+  startMusic: {fileID: 8300000, guid: 694430bff079a7d46870b586303b9e25, type: 3}
   constantColor: 1
   randomColors: 0000000001000000
