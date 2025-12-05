@@ -39,14 +39,17 @@ public class ScoreManager : MonoBehaviour
     {
         if (currentLives <= 0)
         {
-            isGameOver = true;
-            if (messageText != null)
+            if (!isGameOver)
             {
-                messageText.gameObject.SetActive(true);
-                messageText.text = "GAME OVER\n but you can continue";
-                StartCoroutine(DisappearAfterSeconds(5f));
-                return;
+                isGameOver = true;
+                if (messageText != null)
+                {
+                    messageText.gameObject.SetActive(true);
+                    messageText.text = "GAME OVER\n but you can continue";
+                    StartCoroutine(DisappearAfterSeconds(5f));
+                }
             }
+            return;
         }
 
         currentLives--; 

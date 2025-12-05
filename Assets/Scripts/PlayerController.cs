@@ -47,13 +47,13 @@ public class PlayerController : MonoBehaviour
 
     void SwapColor()
     {
-        if (playerColor == BulletColor.Red)
+        if (playerColor == BulletColor.Cyan)
         {
-            playerColor = BulletColor.Blue;
+            playerColor = BulletColor.Magenta;
         }
         else
         {
-            playerColor = BulletColor.Red;
+            playerColor = BulletColor.Cyan;
         }
 
         UpdateColorVisuals();
@@ -73,13 +73,13 @@ public class PlayerController : MonoBehaviour
     {
         if (sr != null)
         {
-            if (playerColor == BulletColor.Red)
+            if (playerColor == BulletColor.Cyan)
             {
-                sr.color = Color.red;
+                sr.color = Color.cyan;
             }
-            else if (playerColor == BulletColor.Blue)
+            else if (playerColor == BulletColor.Magenta)
             {
-                sr.color = Color.blue;
+                sr.color = Color.magenta;
             }
         }
     }
@@ -152,9 +152,9 @@ public class PlayerController : MonoBehaviour
         playerColor = c;
         switch (c)
         {
-            case BulletColor.Red: sr.color = Color.red; break;
-            case BulletColor.Blue: sr.color = Color.blue; break;
-            case BulletColor.Green: sr.color = Color.green; break;
+            case BulletColor.Cyan: sr.color = Color.cyan; break;
+            case BulletColor.Magenta: sr.color = Color.magenta; break;
+            case BulletColor.Yellow: sr.color = Color.yellow; break;
         }
     }
 
@@ -187,9 +187,9 @@ public class PlayerController : MonoBehaviour
     {
         switch (c)
         {
-            case BulletColor.Red: return Color.red;
-            case BulletColor.Blue: return Color.blue;
-            case BulletColor.Green: return Color.green;
+            case BulletColor.Cyan: return Color.cyan;
+            case BulletColor.Magenta: return Color.magenta;
+            case BulletColor.Yellow: return Color.yellow;
             default: return Color.white;
         }
     }

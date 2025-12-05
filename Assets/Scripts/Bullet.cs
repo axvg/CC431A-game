@@ -26,17 +26,17 @@ public class Bullet : MonoBehaviour
         bc = newType;
         if (sr != null)
         {
-            if (bc == BulletColor.Red)
+            if (bc == BulletColor.Cyan)
             {
-                sr.color = Color.red;
+                sr.color = Color.cyan;
             }
-            else if (bc == BulletColor.Blue)
+            else if (bc == BulletColor.Magenta)
             {
-                sr.color = Color.blue;
+                sr.color = Color.magenta;
             }
-            else if (bc == BulletColor.Green)
+            else if (bc == BulletColor.Yellow)
             {
-                sr.color = Color.green;
+                sr.color = Color.yellow;
             }
         }
     }

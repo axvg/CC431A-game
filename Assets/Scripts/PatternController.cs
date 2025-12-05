@@ -151,7 +151,7 @@ public class PatternController : MonoBehaviour
         // GameObject newEnemyObj = Instantiate(prefab, spawnPos, prefab.transform.rotation);
         GameObject newEnemyObj = Instantiate(prefab, spawnPos, Quaternion.Euler(0, 0, 180));
 
-        BulletColor chosenColor = BulletColor.Red;
+        BulletColor chosenColor = BulletColor.Cyan;
         
         if (currentLevelData.colorMode == LevelColorMode.Constant)
         {

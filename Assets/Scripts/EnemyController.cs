@@ -38,17 +38,17 @@ public class EnemyController : MonoBehaviour
         {
             switch (color)
             {
-                case BulletColor.Red:
-                    sr.color = Color.red;
+                case BulletColor.Cyan:
+                    sr.color = Color.cyan;
                     break;
-                case BulletColor.Blue:
-                    sr.color = Color.blue;
+                case BulletColor.Magenta:
+                    sr.color = Color.magenta;
                     break;
-                case BulletColor.Green:
-                    sr.color = Color.green;
+                case BulletColor.Yellow:
+                    sr.color = Color.yellow;
                     break;
                 default:
-                    sr.color = Color.green;
+                    sr.color = Color.yellow;
                     break;
             }
         }

@@ -15,22 +15,18 @@ public class PatternDoubleHelix : BasePattern
 
         for (int i = 0; i < bulletsPerWave; i++)
         {
-            // ESPIRAL 1: Gira a la derecha (+)
             float angleA = angleClockwise + (i * angleSegment);
             Bullet b1 = BulletPoolManager.Instance.GetBullet(spawner.position, Quaternion.identity);
             b1.direction = GetDirectionFromAngle(angleA);
             b1.SetColor(patternColor); // Usa el color del enemigo
 
-            // ESPIRAL 2: Gira a la izquierda (-)
-            // Truco visual: Le sumamos offset (angleSegment/2) para que no salgan pegadas a la primera
             float angleB = angleCounterClockwise + (i * angleSegment) + (angleSegment / 2);
             Bullet b2 = BulletPoolManager.Instance.GetBullet(spawner.position, Quaternion.identity);
             b2.direction = GetDirectionFromAngle(angleB);
             
 
-            // Si el patrón es rojo, la inversa será azul.
-            if (patternColor == BulletColor.Red) b2.SetColor(BulletColor.Blue);
-            else if (patternColor == BulletColor.Blue) b2.SetColor(BulletColor.Red);
+            if (patternColor == BulletColor.Cyan) b2.SetColor(BulletColor.Magenta);
+            else if (patternColor == BulletColor.Magenta) b2.SetColor(BulletColor.Cyan);
             else b2.SetColor(patternColor);
         }
 

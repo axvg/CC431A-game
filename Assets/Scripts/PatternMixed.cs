@@ -21,11 +21,11 @@ public class PatternMixed : BasePattern
 
             if (i % 2 == 0)
             {
-                b.SetColor(BulletColor.Red);
+                b.SetColor(BulletColor.Cyan);
             }
             else
             {
-                b.SetColor(BulletColor.Blue);
+                b.SetColor(BulletColor.Magenta);
             }
         }
 

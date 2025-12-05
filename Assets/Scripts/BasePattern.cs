@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class BasePattern : MonoBehaviour
 {
-    public BulletColor patternColor = BulletColor.Red;
+    public BulletColor patternColor = BulletColor.Cyan;
 
     public abstract void Trigger(Transform spawner);
 
